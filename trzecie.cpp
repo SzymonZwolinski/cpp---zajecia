@@ -1,9 +1,15 @@
 #include <iostream>
 #include "linia2.cpp"
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
-
-void trzeci(float a, float b, float c)
+using namespace std;
+void trzeci()
 {
+	float a,b,c;
+	
+	cout <<"Podaj a: "; cin>>a;
+	cout <<"podaj b: ";cin>>b;
+	cout <<"podaj c: ";cin >>c;
+	
 	// y = -(a/b)x - (c/b)
 	
 	float x,y;
@@ -13,8 +19,4 @@ void trzeci(float a, float b, float c)
 	
 }
 
-int main()
-{
-	trzeci(3,3,3);
-	return 1;	
-}
+
