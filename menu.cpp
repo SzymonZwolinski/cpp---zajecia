@@ -10,7 +10,7 @@ using namespace std;
 void menu()
 {
 	int czy = 1;
-	bool kwadr_lini;
+	int kwadr_lini;
 	float a,b,c;
 	while(czy>0)
 	{
