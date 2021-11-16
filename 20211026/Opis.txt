@@ -1,0 +1,8 @@
+Menu = main!
+
+liniowa = v1.0
+linia2 = v1.2
+trzecie = v1.4
+kwadratowa = v2.0
+main = v2.2
+fkwadrat = v2.5 + v2.6
