@@ -1,0 +1,112 @@
+using System;
+
+/*
+Zaprojektować klasę przechowującą obiekt typu string i pierwsze metody: V dodaj na końcu, V dodaj na początku,  wstaw od pozycji N, usuń N elementów od pozycji M, V  wyczyść string,V podaj długość 
+*/
+					
+public class Program
+{
+	
+	class stringusie
+	{
+		private char [] tab = new char [0];
+		private char [] tab_pomoc = new char [0];
+		private int dlugosc;
+		public void wypisz()
+		{
+			Console.WriteLine(tab);
+		}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------		
+		public void dodaj_na_poczatek(string slowo)
+		{
+			/*
+			działa nie ruszać
+			
+			jezeli istnieje to dzieja sie cuda
+			jak nie to poprostu przerzuc
+			*/
+			if(tab.Length >0)
+			{
+				Console.WriteLine("Dodaje na początek wariacie");
+				Array.Resize(ref tab_pomoc,tab.Length);
+				Array.Copy(tab, tab_pomoc,tab.Length);
+				Array.Resize(ref tab, tab.Length + slowo.Length);
+				for(int i = 0 ; i < slowo.Length ;i++)
+				{
+					tab[i+slowo.Length] = tab[i]; // przesuwam poczatek 
+				}
+				for(int i = slowo.Length ; i < tab.Length; i++)
+				{
+					tab[i] = tab_pomoc[i - slowo.Length]; //przesuwam od przesunietego ( od pozycji ktorą ukradlem wyzej), odwzorowuje dalej (poprostu dlugosc kasuej frajerowi)
+				}
+				for(int i = 0; i <slowo.Length ; i++)
+				{
+					tab[i] = slowo[i]; // dodaje na start ( 1 petla robi miejsce, 2 odwzorowuje tablice po miejscu wolnym)
+				}
+			
+			}
+			else
+			{
+				tab = slowo.ToCharArray();
+			}
+		}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		public void dodaj_na_koniec(string slowo)
+		{
+			/*
+			chyba działa
+			*/
+			if(tab.Length >0)
+			{
+				int temp = tab.Length;
+				Array.Resize(ref tab, tab.Length + slowo.Length);
+				for(int i = 0 ; i < slowo.Length ; i++)
+				{
+					tab[i + temp] = slowo[i];
+				}
+			}
+			else
+			{
+				tab = slowo.ToCharArray();
+			}
+		}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		public void dodaj_insert(int pozycja, string slowo)
+		{
+			/*Kopiowańsko*/
+				Array.Resize(ref tab_pomoc,tab.Length);
+				Array.Copy(tab, tab_pomoc,tab.Length);
+				Array.Resize(ref tab, tab.Length + slowo.Length);
+				for(int i = pozycja ; i < pozycja + slowo.Length ;i++)
+				{
+					// tutaj se przesune od pozycji 
+					tab[i] = tab[i+slowo.Length];
+				}
+				for(int i = pozycja+slowo.Length ; i < tab.Length ; i++)
+				{
+					tab[i] = tab_pomoc[]; //przesuwam od przesunietego ( od pozycji ktorą ukradlem wyzej), odwzorowuje dalej (poprostu dlugosc kasuej frajerowi)
+				}
+				
+		}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		public void wypisz_dlugosc()
+		{
+			Console.WriteLine(tab.Length);
+		}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		public void wyczysc()
+		{
+			Array.Clear(tab,0,tab.Length);
+		}
+	}
+	public static void Main()
+	{
+		stringusie str = new stringusie();
+		str.dodaj_na_poczatek("1234561");
+		str.wypisz();
+		str.dodaj_na_poczatek("69");
+		str.wypisz();
+		str.dodaj_na_koniec("6969");
+		str.wypisz();
+	}
+}
